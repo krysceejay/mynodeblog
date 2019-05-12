@@ -4,6 +4,8 @@ module.exports = buildSchema(`
     _id: ID!
     title: String!
     body: String!
+    category: [String!]
+    status: Boolean!
     imageUrl: String!
     user: User!
     createdAt: String!
@@ -15,8 +17,14 @@ module.exports = buildSchema(`
     email: String!
     name: String!
     password: String
-    status: String!
     posts: [Post!]!
+  }
+
+  type Category {
+    _id: ID!
+    name: String!
+    createdAt: String!
+    updatedAt: String!
   }
 
   type AuthData {
@@ -36,24 +44,37 @@ module.exports = buildSchema(`
   }
 
   input PostInputData {
-    title: String!
+    title: String! 
     body: String!
     imageUrl: String!
+    status: Boolean!
+    category: [String!]
   }
 
   type RootQuery {
     login(email: String!, password: String!): AuthData!
     getPosts(page: Int!): PostData!
+    getPost(id: ID!): Post!
+    getUser: User!
     greeting(name: String): String!
   }
 
   type RootMutation {
     createUser(userInput: UserInputData): User!
     createPost(postInput: PostInputData): Post!
+    updatePost(id: ID!, postInput: PostInputData):
+     Post!
+    deletePost(id: ID!): Boolean
+    createCategory(name: String!): Category!
+  }
+
+  type RootSubscription {
+    count: Int!
   }
 
   schema {
     query: RootQuery
     mutation: RootMutation
+    subscription: RootSubscription
   }
 `);

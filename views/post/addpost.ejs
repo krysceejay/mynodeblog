@@ -1,0 +1,123 @@
+<% include ../layouts/head %>
+<% include ../layouts/header %>
+<% include ../layouts/sidebar %>
+      <!-- partial -->
+     
+
+      <div class="main-panel">        
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Add Post</h4>
+                  <form class="form-sample" action="/post/createpost" method="POST" enctype="multipart/form-data">
+                    
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Title</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="title" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Category</label>
+                    <div class="col-sm-9">
+                    <select class="js-example-basic-multiple w-100" multiple="multiple" name="category">
+                      <option value="AL">Alabama</option>
+                      <option value="WY">Wyoming</option>
+                      <option value="AM">America</option>
+                      <option value="CA">Canada</option>
+                      <option value="RU">Russia</option>
+                    </select>
+                    </div>
+                  </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Feature Image</label>
+                      <div class="col-sm-9 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <input type="file" class="dropify" name="postimage" />
+                </div>
+              </div>
+            </div>
+                    </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Status</label>
+                          <div class="col-sm-4">
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="poststatus" id="membershipRadios1" value="0" checked>
+                                Draft
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-sm-5">
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="poststatus" id="membershipRadios2" value="1">
+                                Publish
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                   
+
+                     <div class="row">
+                      <div class="col-md-12"> 
+                    <div class="form-group row">
+                      <label class="col-sm-12 col-form-label">Post</label>
+                      <div class="col-sm-12">
+                      <textarea name="postbody" id="editor1" rows="10" cols="80"></textarea>
+                      </div>
+                    </div>
+                    </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+
+                    <button type="submit" class="btn btn-primary btn-md btn-block">Submit
+                      <i class="ti-menu float-right"></i>
+                    </button>
+                    </div>
+                    <div class="col-md-6">
+
+                    <a href=""><button type="button" class="btn btn-danger btn-md btn-block">Cancel
+                      <i class="ti-menu float-right"></i>
+                    </button></a>
+                    </div>
+                    </div>
+
+
+
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+
+        <script>
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                CKEDITOR.replace( 'editor1',{
+                  "extraPlugins" : 'imagebrowser',
+			            "imageBrowser_listUrl" : "/files"
+                } );
+            </script>
+    
+        <% include ../layouts/footer %>
+        
